@@ -1,6 +1,19 @@
 function fetchBooks() {
   // To pass the tests, don't forget to return your fetch!
+  return fetch("https://anapioficeandfire.com/api/books")
+  .then((resp) => resp.json())
+  // .then((json) => console.log(json));
+  .then((json) => renderBooks(json))
   
+}
+
+const numberOfPages = (inventory) => {
+  let counter = 0
+  for (let book in inventory) {
+    counter += inventory[book].numberOfPages;
+  }
+  console.log(counter);
+
 }
 
 function renderBooks(books) {
